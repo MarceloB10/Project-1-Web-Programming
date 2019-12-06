@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Login Page</title>
+{% endblock %}
+
+
+{% block body %}
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <h2>Login  here!</h2>
+      <p></p>
+    <form action="{{ url_for('login') }}" method="post">
+
+        <div class="form-group">
+
+            <input class="form-control" type="text" name="username" placeholder="Username">
+            <p></p>
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-outline-dark">Login</button>
+        </div>
+    </form>
+
+   <p class="text-danger">  {{ message }}  </p>
+
+   {% if username %}
+   <p class="text-success">  Yeah!  </p>
+   <p class="text-success">  You have logged in as  {{ username }}.  </p>
+
+   {% endif %}
+
+{% endblock %}

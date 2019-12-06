@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Register Page</title>
+{% endblock %}
+
+
+{% block body %}
+<p></p>
+<p></p>
+<p></p>
+
+    <h2>Register here!</h2>
+<p></p>
+    <form action="{{ url_for('register') }}" method="post">
+
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Username">
+            <p></p>
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-outline-dark">Register</button>
+        </div>
+    </form>
+   <p class="text-danger">  {{ message }}  </p>
+   {% if username %}
+   <p class="text-success">  User {{ username }} has been registered successfully!  </p>
+   {% endif %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    <title>Search for books.</title>
+{% endblock %}
+
+
+{% block body %}
+
+
+
+
+<div id="data">
+
+
+      {% if search %}
+      <h1>Information for: </h1>
+      <h2>"{{ book_result[0][2] }}" </h2>
+        <ul>
+          {% for result in results %}
+             <li>{{ result }}</li>
+          {% endfor %}
+        </ul>
+
+      <ul>
+             <li>Title: {{ book_result[0][2] }}</li>
+             <li>Author: {{ book_result[0][3] }}</li>
+             <li>Year: {{ book_result[0][4] }}</li>
+             <li>ISBN: {{ book_result[0][1] }}</li>
+
+      </ul>
+      <h5>Goodreads average rating is: {{ good_reads }}</h5>
+      <br>
+      <h6>{{ reviews }}</h6>
+      <ul>
+            {% for book_review in book_reviews %}
+             <li>Review from {{ book_review[0] }}: {{ book_review[1] }} - {{book_review[2] }}. </li>
+          {% endfor %}
+        </ul>
+</div>
+
+<div id="new_review">
+      <br>
+      <form  method="post">
+        <div class="form-group">
+            <h4>Rating: </h4>
+            (1 for the worst and 5 for the best)
+            <input type="number" name="rating" min="1" max="5" default="0" required>
+            <p></p>
+            <input class="form-control" type="text" name="comment" placeholder="Your comments..." required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-dark">Submit</button>
+        </div>
+      </form>
+      {% endif %}
+      {% if not search %}
+      <h2>You are not logged in!</h2>
+      <h5>You shloud login first</h5>
+      {% endif %}
+
+    </div>
+
+{% endblock %}

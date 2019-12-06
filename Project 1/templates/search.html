@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Search for books.</title>
+{% endblock %}
+
+{% block body %}
+<div id="boxes">
+      {% if search %}
+      <h2>Search for books</h2>
+      <p></p>
+      <form action="{{ url_for('search') }}" method="post">
+        <div class="form-group">
+
+            <p></p>
+            <input class="form-control" type="text" name="title" placeholder="Title">
+            <p></p>
+            <input class="form-control" type="text" name="author" placeholder="Author">
+            <p></p>
+            <input class="form-control" type="text" name="isbn" placeholder="ISBN">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-outline-dark">Search</button>
+        </div>
+      </form>
+
+</div>
+
+<div id="search">
+
+      <h2>Search results:</h2>
+<!--      <p>{{ results }}</p> -->
+        <ul>
+          {% if not results %}
+              <li> No results</li>
+              {% for result in results %}
+                <li>{{ result }}</li>
+             {% endfor %}
+          {% endif %}
+          {% if results %}
+             {% for result in results %}
+                <li><a href=/result/{{ result[1] }}>{{ result }}</a></li>
+             {% endfor %}
+          {% endif %}
+        </ul>
+      {% endif %}
+      {% if not search %}
+         <h2>Search for books</h2>
+         <h4 class="text-danger">You need to login first!</h4>
+      {% endif %}
+
+</div>
+
+{% endblock %}
